@@ -12,4 +12,6 @@ function Remove() {
   for (var i = 0; i < amor.length; i++) {
     amor[i].style.backgroundColor = "" ;
   }
+
+  console.log("Inara te amo")
 }
