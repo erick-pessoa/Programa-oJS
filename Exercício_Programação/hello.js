@@ -13,19 +13,4 @@ function Remove() {
     amor[i].style.backgroundColor = "" ;
   }
 
-  console.log("Inara te amo")
-  console.log("Inara te amo")
-  console.log("Inara te amo")
-  console.log("Inara te amo")
-  console.log("Inara te amo")
-  console.log("Inara te amo")
-  console.log("Inara te amo")
-    console.log("Inara te amo")
-      console.log("Inara te amo")
-        console.log("Inara te amo")
-          console.log("Inara te amo")
-            console.log("Inara te amo")
-              console.log("Inara te amo")
-              
-
 }
