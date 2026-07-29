@@ -66,10 +66,28 @@ body {
   box-shadow: 0 0 15px rgba(255, 215, 0, 0.9);
 }
 
-.emoji{
+.emoji {
   position: absolute;
   top: -50px;
   left: 50%;
   font-size: 30px;
-  filter: drop-shadow(0 0 10px rgba(white));
+  filter: drop-shadow(0 0 10px rgba(black, red, blue));
 }
+
+.toggle-container.dark .emoji.sun {
+  opacity: 0;
+}
+
+.toggle-container .emoji.moon{
+  opacity: 0;
+}
+
+.toggle-container.dark .emoji.moon{
+  opacity: 1;
+}
+
+.toggle-container:not(.dark) .emoji.moon{
+  opacity: 0;
+}
+
+
