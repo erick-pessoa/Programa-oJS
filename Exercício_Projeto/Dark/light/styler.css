@@ -26,12 +26,20 @@ body {
 }
 
 .background-light {
-  background-color: #f5f5f5;
+  background-color: antiquewhite;
   opacity: 1;
 }
 .background-dark {
   background-color: #1a1a1a;
   opacity: 0;
+}
+
+.dark .background-light {
+  opacity: 0;
+}
+
+.dark .background-dark {
+  opacity: 1;
 }
 
 .toggle-container {
@@ -72,22 +80,17 @@ body {
   left: 50%;
   font-size: 30px;
   filter: drop-shadow(0 0 10px rgba(black, red, blue));
+  transition:
+    opacity 0.4s ease,
+    transform 0.4s ease;
 }
 
 .toggle-container.dark .emoji.sun {
   opacity: 0;
+  transform: translateX(-50%) translateY(-10px) rotate(360deg);
 }
 
-.toggle-container .emoji.moon{
+.toggle-container:not(.dark) .emoji.moon {
   opacity: 0;
+  transform: translateX(-50%) translateY(-10px);
 }
-
-.toggle-container.dark .emoji.moon{
-  opacity: 1;
-}
-
-.toggle-container:not(.dark) .emoji.moon{
-  opacity: 0;
-}
-
-
