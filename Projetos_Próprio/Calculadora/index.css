@@ -6,7 +6,7 @@
 
 h1 {
   color: black;
-   font-family: Arial, Helvetica, sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 body {
@@ -15,7 +15,7 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: 
+  background-color:;
 }
 
 .calculadora {
@@ -25,7 +25,7 @@ body {
   border-radius: 10px;
   padding: 20px;
   box-sizing: border-box;
-
+  display: flexbox;
 }
 
 #display {
@@ -43,17 +43,15 @@ body {
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
   gap: 10px; /* Espaçamento entre os botões */
-
 }
 
 button {
-  background-color: #FFA500;
+  background-color: #ffa500;
   border: none;
   border-radius: 10px;
   height: 60px;
   color: white;
   font-size: 20px;
-
 }
 
 button:hover {
@@ -62,25 +60,35 @@ button:hover {
   transition: 0.1s;
 }
 
-.btn-result{
-  grid-row:4/6;
+.btn-result {
+  grid-row: 7/5;
   height: 100%;
   grid-column: 4;
   background-color: gold;
   color: black;
 }
 
-.btn-zero{
- grid-column: 1/3;
+.btn-zero {
+  background-color: white;
+  color: black;
+  grid-column: 1/3;
+}
+.btn-toggle {
+  position: relative;
+  grid-column: 4;
+  height: 1em;
  background-color: white;
- color: black;
 }
-.btn-toggle{
- grid-column: 1/5;
-}
-.btn-toggle-on{
-  width: 50px;
-  height: 50px;
+.btn-toggle-on {
+  position: absolute;
+  width: 20px;
+  height: 20px;
   border-radius: 50%;
+  background-color: #ffa500;
+  bottom: 0;
+}
+
+.btn-toggle.Dark .btn-toggle-on {
+  left: 40px;
   background-color: black;
 }

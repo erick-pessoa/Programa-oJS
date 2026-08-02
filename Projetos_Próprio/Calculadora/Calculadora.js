@@ -20,3 +20,10 @@ function calculate() {
     display.value = "Error";
   }
 }
+
+//Botão toggle
+const btnToggle = document.querySelector(".btn-toggle");
+
+btnToggle.addEventListener("click", () => {
+  btnToggle.classList.toggle("Dark");
+});

@@ -60,10 +60,13 @@ button:hover {
   grid-column: 1/3;
 }
 
-.btn-result{
-grid-row: 4/6;
-height: 100%;
-grid-column: 4;
+.btn-result {
+  grid-row: 4/6;
+  height: 100%;
+  grid-column: 4;
 }
 
-
+.box-button.Dark .btn-toggle-on{
+background-color: white;
+color: black;
+}
