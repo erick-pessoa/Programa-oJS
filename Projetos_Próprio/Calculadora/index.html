@@ -10,7 +10,7 @@
 </head>
 
 <body>
-    <h1>Calculadora</h1>
+    <h1>CALCULADORA</h1>
 
     <div class="calculadora">
 
@@ -32,9 +32,12 @@
             <button onclick="insertToDisplay('1')">1</button>
             <button onclick="insertToDisplay('2')">2</button>
             <button onclick="insertToDisplay('3')">3</button>
-            <button onclick="calculate()">=</button>
-            <button onclick="insertToDisplay('0')">0</button>
+            <button class="btn-result" onclick="calculate()">=</button>
+            <button class="btn-zero" onclick="insertToDisplay('0')">0</button>
             <button onclick="insertToDisplay('.')">.</button>
+            <button class="btn-toggle">
+                <div class="btn-toggle-on"></div>
+            </button>
         </div>
 
     </div>

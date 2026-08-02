@@ -5,8 +5,8 @@
 }
 
 h1 {
-  color: white;
-  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  color: black;
+   font-family: Arial, Helvetica, sans-serif;
 }
 
 body {
@@ -15,16 +15,17 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: black;
+  background-color: 
 }
 
 .calculadora {
-  background-color: saddlebrown;
+  background-color: black;
   margin-top: 20px;
   width: 300px;
   border-radius: 10px;
   padding: 20px;
   box-sizing: border-box;
+
 }
 
 #display {
@@ -33,6 +34,7 @@ body {
   margin-bottom: 20px;
   height: 30px;
   border-radius: 10px;
+  font-size: 20px;
   background-color: white;
 }
 
@@ -41,18 +43,44 @@ body {
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
   gap: 10px; /* Espaçamento entre os botões */
+
 }
 
 button {
-  background-color: wheat;
+  background-color: #FFA500;
   border: none;
   border-radius: 10px;
-  height: 30px;
+  height: 60px;
+  color: white;
+  font-size: 20px;
 
 }
 
 button:hover {
-  background-color: darkgray;
-  color: white;
-  transition: 0.3s;
+  background-color: beige;
+  color: black;
+  transition: 0.1s;
+}
+
+.btn-result{
+  grid-row:4/6;
+  height: 100%;
+  grid-column: 4;
+  background-color: gold;
+  color: black;
+}
+
+.btn-zero{
+ grid-column: 1/3;
+ background-color: white;
+ color: black;
+}
+.btn-toggle{
+ grid-column: 1/5;
+}
+.btn-toggle-on{
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: black;
 }
