@@ -23,7 +23,14 @@ function calculate() {
 
 //Botão toggle
 const btnToggle = document.querySelector(".btn-toggle");
+const btnToggle_backgroundCal = document.querySelector(".calculadora");
+const btnToggle_on = document.querySelector(".btn-toggle-on");
+const btnToggle_title = document.querySelector(".Title_toggle")
+
 
 btnToggle.addEventListener("click", () => {
   btnToggle.classList.toggle("Dark");
+  btnToggle_backgroundCal.classList.toggle("Dark");
+  document.body.classList.toggle("Dark");
+  btnToggle_title.classList.toggle("Dark");
 });

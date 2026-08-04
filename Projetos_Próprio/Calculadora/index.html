@@ -10,16 +10,16 @@
 </head>
 
 <body>
-    <h1>CALCULADORA</h1>
+    <h1 class="Title_toggle">CALCULADORA</h1>
 
     <div class="calculadora">
         <input type="text" id="display" placeholder="0,0" disabled>
-        
+
         <div class="box-button">
-            
-                    <button class="btn-toggle">
-                            <div class="btn-toggle-on"></div>
-                        </button>
+
+            <button class="btn-toggle">
+                <div class="btn-toggle-on"></div>
+            </button>
             <button onclick="clean_display()">C</button>
             <button onclick="delet_unit()">&lt;</button>
             <button onclick="insertToDisplay('/')">/</button>
@@ -38,7 +38,7 @@
             <button class="btn-result" onclick="calculate()">=</button>
             <button class="btn-zero" onclick="insertToDisplay('0')">0</button>
             <button onclick="insertToDisplay('.')">.</button>
-            
+
         </div>
 
     </div>
