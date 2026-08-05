@@ -36,6 +36,8 @@ button {
   background-color: antiquewhite;
   cursor: pointer;
   transition: 0.3s ease;
+  border-radius: 5px;
+  padding: 5px;
 }
 
 button:hover {
@@ -59,4 +61,8 @@ li {
   display: flex;
   justify-content: space-between; /*Alinhamento entre o que escreve e o botão X*/
   font-weight: bold;
+}
+
+span{
+  cursor: pointer;
 }

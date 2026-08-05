@@ -1,5 +1,11 @@
-const container = document.getElementById('container')
+function adicionarTarefa() {
+  let ValorDoInput = document.querySelector("input").value;
+  let CriaçãoDaLi = document.createElement("li");
 
-container.addEventListener('click', () => {
-  alert('oi')
-})
+  CriaçãoDaLi.innerHTML = ValorDoInput + '<span onclick="removerTarefa(this)">❌</span>';
+  document.querySelector('ul').appendChild(CriaçãoDaLi);
+}
+
+function removerTarefa(span) {
+   span.parentElement.remove();
+}
