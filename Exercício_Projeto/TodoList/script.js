@@ -4,8 +4,11 @@ function adicionarTarefa() {
 
   CriaçãoDaLi.innerHTML = ValorDoInput + '<span onclick="removerTarefa(this)">❌</span>';
   document.querySelector('ul').appendChild(CriaçãoDaLi);
+
+  document.querySelector('input').value = '';
 }
 
-function removerTarefa(span) {
-   span.parentElement.remove();
+
+function removerTarefa(e) {
+   e.parentElement.remove();
 }
