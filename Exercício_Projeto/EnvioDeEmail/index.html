@@ -1,31 +1,35 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="script.js" defer></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <link rel="stylesheet" href="style.css">
     <title>Envio de Email</title>
 </head>
+
 <body>
-    
-   <form action="" method="" id="form">
 
-    <label for="nome" > Nome:</label>
-    <input type="text" id="nome" placeholder="Digite seu nome">
+    <form action="" method="post" id="form">
 
-    <label for="email" > E-mail:</label>
-    <input type="text" id="email" placeholder="Digite seu e-mail">
-     
-    <label for="assunto" > Assunto:</label>
-    <input type="text" id="assunto" placeholder="Digite o assunto">
+        <label for="nome"> Nome:</label>
+        <input type="text" id="nome" placeholder="Digite seu nome" required>
 
-    <label for="Mensagem" > Mensagem:</label>
-    <textarea id="Mensagem" placeholder="Digite sua mensagem" ></textarea>
+        <label for="email"> E-mail:</label>
+        <input type="text" id="email" placeholder="Digite seu e-mail" required>
 
-    <button type="submit" id="enviar">Enviar</button>
+        <label for="assunto"> Assunto:</label>
+        <input type="text" id="assunto" placeholder="Digite o assunto" required>
 
-   </form>
+        <label for="Mensagem"> Mensagem:</label>
+        <textarea id="Mensagem" placeholder="Digite sua mensagem" rows="5" required></textarea>
+
+        <button type="submit" id="enviar">Enviar</button>
+
+    </form>
 
 </body>
+
 </html>
