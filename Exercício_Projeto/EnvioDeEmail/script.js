@@ -2,22 +2,28 @@ emailjs.init({
   publicKey: "q9v4mF73rB6-st1DT",
 });
 
-document.getElementById('form').addEventListener('submit', function (event) {    
+document.getElementById("form").addEventListener("submit", function (event) {
+  event.preventDefault();
 
-           event.preventDefault();
+  const formData = {
+    nome: document.getElementById("nome").value,
+    email: document.getElementById("email").value,
+    assunto: document.getElementById("assunto").value,
+    mensagem: document.getElementById("Mensagem").value,
+  };
 
-           const formData = {
-            nome: document.getElementById('nome').value,
-            email: document.getElementById('email').value,
-            assunto: document.getElementById('assunto').value,
-            mensagem: document.getElementById('Mensagem').value                                                                                                                                                                                                                     
-           }
+  const serviuceID = "service_a6ckn2e";
+  const templateID = "template_5auanj9";
+  const button_enviar = document.getElementById("button_enviar");
 
-           const serviuceID = "service_a6ckn2e";
-           const templateID = "template_5auanj9";
+  button_enviar.textContent = "Enviando...";
 
-
-           emailjs.send(serviuceID,templateID, formData);
-
-          
-  });
+  emailjs
+    .send(serviuceID, templateID, formData)
+    .then(() => {
+      alert("Enviado com Sucesso!");
+    })
+    .catch((error) => {
+      alert("Occorreu um erro ao enviar o email: " + error);
+    });
+});
