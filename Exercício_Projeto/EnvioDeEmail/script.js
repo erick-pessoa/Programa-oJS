@@ -9,7 +9,7 @@ document.getElementById("form").addEventListener("submit", function (event) {
     nome: document.getElementById("nome").value,
     email: document.getElementById("email").value,
     assunto: document.getElementById("assunto").value,
-    mensagem: document.getElementById("Mensagem").value,
+    mensagem: document.getElementById("mensagem").value,
   };
 
   const serviuceID = "service_a6ckn2e";
@@ -18,12 +18,11 @@ document.getElementById("form").addEventListener("submit", function (event) {
 
   button_enviar.textContent = "Enviando...";
 
-  emailjs
-    .send(serviuceID, templateID, formData)
-    .then(() => {
+  emailjs.send(serviuceID, templateID, formData).then(() => {
       alert("Enviado com Sucesso!");
-    })
-    .catch((error) => {
+      button_enviar.textContent = "Enviar";
+    }).catch((error) => {
       alert("Occorreu um erro ao enviar o email: " + error);
+      button_enviar.textContent = "Enviar";
     });
 });
