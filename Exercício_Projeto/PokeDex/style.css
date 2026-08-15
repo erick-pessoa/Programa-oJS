@@ -1,0 +1,19 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+ background: linear-gradient(to bottom, #00a8ff, #fff);
+  text-align: center;
+  min-height: 100vh;
+  
+}
+
+main {
+    display: inline-block;
+   margin-top: 2%;
+
+}
+
