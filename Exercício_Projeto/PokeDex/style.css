@@ -5,15 +5,28 @@
 }
 
 body {
- background: linear-gradient(to bottom, #00a8ff, #fff);
+  background: linear-gradient(to bottom, #00a8ff, #fff);
   text-align: center;
   min-height: 100vh;
-  
 }
 
 main {
-    display: inline-block;
-   margin-top: 2%;
-
+  display: inline-block;
+  padding: 5%;
+  position: relative;
 }
 
+#pokedex {
+  width: 100%;
+  max-width: 425px;
+}
+
+.pokemon {
+  position: absolute;
+  left: 50%;
+  bottom: 50%;
+  transform: translate(-63%, -20%);
+  height: 5%;
+
+
+}
