@@ -25,8 +25,40 @@ main {
   position: absolute;
   left: 50%;
   bottom: 50%;
-  transform: translate(-63%, -20%);
-  height: 5%;
-
-
+  transform: translate(-60%, 2%);
+  height: 18%;
 }
+
+.pokmeon_data{
+  position: absolute;
+  font-weight: 600;
+  top: 54.5%;
+  right: 27%;
+font-size: clamp(1.5rem,2vw,3rem)
+}
+
+.pokemon_name{
+  color: cadetblue;
+  text-transform: capitalize;
+}
+
+.form_pokedex{
+ position: absolute;
+ width: 65%;
+ background-color: black;
+ top:65%;
+ left:13.5%;  
+}
+
+.input_search{
+  width: 100%;
+  padding: 4%;
+  outline: none;
+  border-radius: 5px;
+  font-weight: bold;
+  color: #3a444d;
+  border: 1px solid black;
+  font-size: 1.5rem;
+}
+
+ 
