@@ -14,13 +14,38 @@ body {
   align-items: center;
   border: 1px solid #ccc;
   background-color: #00000006;
-  width: 400px;
+  width: 70%;
   margin: 20px auto;
   border-radius: 20px;
   padding: 5px 10px;
   color: #4b4b4b;
 }
 
-#searchInput{
-    width: 80%;
+#searchInput {
+  padding: 8px;
+  width: 85%;
+  background-color: transparent;
+  border: none;
+  outline: none;
+}
+
+.search label {
+  height: 20px;
+}
+
+.card-container{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  border: 1px solid #ccc;
+}
+
+.card{
+  width: 300px;
+   border: 1px solid #ccc;
+   background-color: #fff;
+   border-radius: 10px;
+   margin: 10px;
+   padding: 10px 20px;
+   box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
 }
