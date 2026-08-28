@@ -33,19 +33,18 @@ body {
   height: 20px;
 }
 
-.card-container{
+.card-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  border: 1px solid #ccc;
 }
 
-.card{
+.card {
   width: 300px;
-   border: 1px solid #ccc;
-   background-color: #fff;
-   border-radius: 10px;
-   margin: 10px;
-   padding: 10px 20px;
-   box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+  border: 1px solid #ccc;
+  background-color: #fff;
+  border-radius: 10px;
+  margin: 10px;
+  padding: 10px 20px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
 }
