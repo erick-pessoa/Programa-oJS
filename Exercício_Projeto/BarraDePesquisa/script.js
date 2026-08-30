@@ -24,10 +24,10 @@ const data = [
 const cardContainer = document.querySelector(".card-container");
 const searchInput = document.querySelector("#searchInput");
 
-const displayData = (data) => {
+const displayData = (item) => {
   cardContainer.innerHTML = "";
 
-  data.forEach((e) => {
+  item.forEach((e) => {
     cardContainer.innerHTML += `
     <div class="card">
     <h3>${e.title}</h3>
@@ -36,5 +36,14 @@ const displayData = (data) => {
     `;
   });
 };
+
+searchInput.addEventListener("keyup", (e) => {
+  const search = data.filter((item) =>
+    item.title.toLocaleLowerCase().includes(e.target.value.toLocaleLowerCase())
+    || item.description.toLocaleLowerCase().includes(e.target.value.toLocaleLowerCase())
+);
+
+  displayData(search);
+});
 
 window.addEventListener("load", displayData.bind(null, data));
