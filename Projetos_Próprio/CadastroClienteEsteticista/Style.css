@@ -1,0 +1,33 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.ContainerPainel {
+  border: 1px solid black;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.ContainerListaPessoas {
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  max-width: 70%;
+  margin: 0 auto;
+}
+#titulo {
+  text-align: center;
+  padding-bottom: 60px;
+}
+
+.ImagemRedeSocial {
+  width: 30px;
+}
+
+.ContainerCadastroPessoa .material-symbols-outlined {
+     font-size: clamp(1.5rem, 2vw, 3rem);
+}
