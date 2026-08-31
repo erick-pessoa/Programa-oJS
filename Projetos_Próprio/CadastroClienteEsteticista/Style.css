@@ -4,6 +4,8 @@
   box-sizing: border-box;
 }
 
+
+/*PAINEL*/
 .ContainerPainel {
   border: 1px solid black;
   display: flex;
@@ -13,7 +15,6 @@
 }
 
 .ContainerListaPessoas {
-  border: 1px solid black;
   display: flex;
   flex-direction: column;
   max-width: 70%;
@@ -29,5 +30,24 @@
 }
 
 .ContainerCadastroPessoa .material-symbols-outlined {
-     font-size: clamp(1.5rem, 2vw, 3rem);
+  font-size: clamp(1.5rem, 3vw, 3rem);
+  cursor: pointer;
+}
+
+
+/*JANELA DO FORMULÁRIO DO CLIENTE*/
+.Janela_cliente{
+  background-color: red;
+  width: 30%;
+  opacity: 1;
+  position: absolute;
+}
+.FechaJanela{
+opacity: 0;
+}
+
+.Janela_cliente form {
+  display: flex;
+  flex-direction: column;
+  width:70%;
 }
