@@ -4,7 +4,6 @@
   box-sizing: border-box;
 }
 
-
 /*PAINEL*/
 .ContainerPainel {
   border: 1px solid black;
@@ -19,6 +18,7 @@
   flex-direction: column;
   max-width: 70%;
   margin: 0 auto;
+  border: 1px solid black;
 }
 #titulo {
   text-align: center;
@@ -34,20 +34,51 @@
   cursor: pointer;
 }
 
-
 /*JANELA DO FORMULÁRIO DO CLIENTE*/
-.Janela_cliente{
+.Janela_cliente {
   background-color: red;
   width: 30%;
   opacity: 1;
   position: absolute;
+  left: 67%;
+  bottom: 45%;
 }
-.FechaJanela{
-opacity: 0;
+.FechaJanela {
+  opacity: 0;
 }
 
 .Janela_cliente form {
   display: flex;
   flex-direction: column;
-  width:70%;
+  width: 100%;
+  padding-left: 5px;
 }
+.Janela_cliente label {
+padding-top: 10px;
+}
+.Janela_cliente input {
+  width: 70%;
+}
+.Janela_cliente textarea {
+  width: 85%;
+  height: 150px;
+  resize: none;
+}
+
+.ContainerBotoes{
+display: flex;
+justify-content:space-around;
+margin: 10px;
+}
+
+#btn-salvar,
+#btn-cancelar {
+  background-color: black;
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 20px;
+}
+
+
