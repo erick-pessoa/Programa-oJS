@@ -41,7 +41,7 @@
   opacity: 1;
   position: absolute;
   left: 67%;
-  bottom: 45%;
+  bottom: 58%;
 }
 .FechaJanela {
   opacity: 0;
@@ -54,7 +54,7 @@
   padding-left: 5px;
 }
 .Janela_cliente label {
-padding-top: 10px;
+  padding-top: 10px;
 }
 .Janela_cliente input {
   width: 70%;
@@ -65,10 +65,10 @@ padding-top: 10px;
   resize: none;
 }
 
-.ContainerBotoes{
-display: flex;
-justify-content:space-around;
-margin: 10px;
+.ContainerBotoes {
+  display: flex;
+  justify-content: space-around;
+  margin: 10px;
 }
 
 #btn-salvar,
@@ -79,6 +79,11 @@ margin: 10px;
   padding: 10px;
   cursor: pointer;
   border-radius: 20px;
+  font-size: 68%;
 }
 
-
+#btn-salvar:hover,
+#btn-cancelar:hover {
+  background-color: white;
+  color: black;
+}
