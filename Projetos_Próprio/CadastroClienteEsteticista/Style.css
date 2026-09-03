@@ -40,11 +40,11 @@
   width: 30%;
   opacity: 1;
   position: absolute;
-  left: 67%;
-  bottom: 58%;
+  left: 66%;
+  bottom: 45%;
 }
 .FechaJanela {
-  opacity: 0;
+  opacity: 1;
 }
 
 .Janela_cliente form {
@@ -86,4 +86,14 @@
 #btn-cancelar:hover {
   background-color: white;
   color: black;
+}
+
+/* LIST OF PEOPLE*/
+
+#remove{
+  cursor: pointer;
+}
+
+#edite{
+  cursor: pointer;
 }
