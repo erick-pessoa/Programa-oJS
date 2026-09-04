@@ -16,17 +16,16 @@ Btn_cadastrar.addEventListener("click", () => {
 
 /* SAVE BUTTON*/
 btn_save.addEventListener("click", () => {
-
   let createFormLi = document.createElement("li");
   createFormLi.innerHTML = ` 
- <div>Nome: ${inputName.value}</div>
- <div>CPF: ${inputCpf.value}</div>
- <div>EMAIL: ${inputEmail.value}</div>
- <div>TELEFONE: ${inputTelefone.value}</div>
- <div>Comentário: ${inputText.value}</div>
+ <div class="client-nome"> Nome: ${inputName.value}</div>
+ <div class="client-cpf"> CPF: ${inputCpf.value}</div>
+ <div class="client-email"> Email: ${inputEmail.value}</div>
+ <div class="client-telefone"> Telefone: ${inputTelefone.value}</div>
+ <div class="client-texto"> Texto: ${inputText.value}</div>
 
- <span id="remove" onclick="removeForm(this)">❌</span>
- <button id="edite" onclick="EditForm(this)">✏️</button>
+ <span class="remove" onclick="removeForm(this)">❌</span>
+ <button class="btn_edit" onclick="EditForm(this)">✏️</button>
  `;
 
   document.querySelector("#list_people").appendChild(createFormLi);
@@ -44,9 +43,10 @@ const removeForm = (e) => {
 };
 
 /* EDIT LIST OF PEOPLE*/
-const editForm = (e)=>{
+const EditForm = (e) => {
 
-  clientEdit = e.parentElement;
+  const client = e.parentElement;
+  const name = client.querySelector(".client-nome");
+  name.textContent=`<div class="client-nome"> Nome: ${}</div>`;
 
-
-}
+};

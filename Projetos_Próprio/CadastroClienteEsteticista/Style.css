@@ -90,10 +90,10 @@
 
 /* LIST OF PEOPLE*/
 
-#remove{
+.remove{
   cursor: pointer;
 }
 
-#edite{
+.btn_edit{
   cursor: pointer;
 }
