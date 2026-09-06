@@ -6,13 +6,20 @@ const inputCpf = document.querySelector("#cpf");
 const inputEmail = document.querySelector("#email");
 const inputTelefone = document.querySelector("#telefone");
 const inputText = document.querySelector("#textClient");
-
+const btnCancelar = document.querySelector("#btn-cancelar");
 let clientEdit = null;
 
 /* SHOWING WINDOW OF CLIENT*/
 Btn_cadastrar.addEventListener("click", () => {
   Janela_cliente.classList.toggle("FechaJanela");
 });
+
+/*Button Cancel */
+btnCancelar.addEventListener("click", () => {
+  Janela_cliente.classList.toggle("FechaJanela");
+});
+
+
 
 /* SAVE BUTTON*/
 btn_save.addEventListener("click", () => {
@@ -60,12 +67,22 @@ btn_save.addEventListener("click", () => {
 
 /* REMOVE LIST OF PEOPLE*/
 const removeForm = (e) => {
-  e.closest('li').remove();
+
+  const Confirmar = confirm("Deseja realmente excluir este cliente ?")
+
+  if(Confirmar){
+    e.closest("li").remove();
+  }
 };
 
 /* EDIT LIST OF PEOPLE*/
 const EditForm = (e) => {
-  const client = e.parentElement;
+
+  const client = e.closest("li");
+
+    if (client.querySelector(".Edit_Sucess")) {
+        return;
+    }
 
   const name = client.querySelector(".client-nome");
   const cpf = client.querySelector(".client-cpf");
@@ -79,29 +96,30 @@ const EditForm = (e) => {
   const telefoneText = telefone.textContent.replace("Telefone: ", "");
   const textText = text.textContent.replace("Texto: ", "");
 
-  const InputNameEdit = document.createElement("input");
-  InputNameEdit.value =   nameText;
+  name.innerHTML = `Nome:
+    <input type="text" value="${nameText}"> 
+    `;
 
-  const inputCpfEdit = document.createElement("input");
-  inputCpfEdit.value = cpfText;
+  cpf.innerHTML = `CPF:
+  <input type="text" value="${cpfText}">
+  `;
 
-  const inputEmailEdit = document.createElement("input");
-  inputEmailEdit.value = emailText;
+  email.innerHTML = `Email:
+    <input type="text" value="${emailText}">
+    `;
 
-  const inputTelefoneEdit = document.createElement("input");
-  inputTelefoneEdit.value = telefoneText;
+  telefone.innerHTML = `Telefone:
+    <input type="text" value="${telefoneText}">
+    `;
 
-  const inputTextEdit = document.createElement("input");
-  inputTextEdit.value = textText;
-
-  name.replaceWith(InputNameEdit);
-  cpf.replaceWith(inputCpfEdit);
-  email.replaceWith(inputEmailEdit);
-  telefone.replaceWith(inputTelefoneEdit);
-  text.replaceWith(inputTextEdit);
-
+  text.innerHTML = `Texto:
+    <textarea>${textText}</textarea>
+    `;
 
   const containerBotoes = client.querySelector(".Lapis_X_Salve");
+  const editButton = containerBotoes.querySelector(".btn_edit");
+  editButton.style.display = "none";
+
   const saveEditButton = document.createElement("button");
   saveEditButton.type = "button";
   saveEditButton.classList.add("Edit_Sucess");
@@ -110,31 +128,23 @@ const EditForm = (e) => {
   containerBotoes.appendChild(saveEditButton);
 
   saveEditButton.addEventListener("click", () => {
-    const newName = document.createElement("div");
-    newName.classList.add("client-nome");
-    newName.textContent = `Nome: ${InputNameEdit.value}`;
-    InputNameEdit.replaceWith(newName);
 
-    const newCpf = document.createElement("div");
-    newCpf.classList.add("client-cpf");
-    newCpf.textContent = `CPF: ${inputCpfEdit.value}`;
-    inputCpfEdit.replaceWith(newCpf);
+    const newName = name.querySelector("input").value;
+    name.textContent = `Nome: ${newName}`;
 
-    const newEmail = document.createElement("div");
-    newEmail.classList.add("client-email");
-    newEmail.textContent = `Email: ${inputEmailEdit.value}`;
-    inputEmailEdit.replaceWith(newEmail);
+    const newCpf = cpf.querySelector("input").value;
+    cpf.textContent = `CPF: ${newCpf}`;
 
-    const newTelefone = document.createElement("div");
-    newTelefone.classList.add("client-telefone");
-    newTelefone.textContent = `Telefone: ${inputTelefoneEdit.value}`;
-    inputTelefoneEdit.replaceWith(newTelefone);
+   const newEmail = email.querySelector("input").value;
+   email.textContent = `Email: ${newEmail}`;
 
-    const newText = document.createElement("div");
-    newText.classList.add("client-texto");
-    newText.textContent = `Texto: ${inputTextEdit.value}`;
-    inputTextEdit.replaceWith(newText);
+   const NewTelefone = telefone.querySelector("input").value;
+   telefone.textContent = `Telefone: ${NewTelefone}`;
 
-    saveEditButton.remove();
+   const newText = text.querySelector("textarea").value;
+   text.textContent = `Texto: ${newText}`;  
+
+   editButton.style.display = "inline-block";
+   saveEditButton.remove();
   });
 };
