@@ -7,7 +7,7 @@ const inputEmail = document.querySelector("#email");
 const inputTelefone = document.querySelector("#telefone");
 const inputText = document.querySelector("#textClient");
 const btnCancelar = document.querySelector("#btn-cancelar");
-let clientEdit = null;
+
 
 /* SHOWING WINDOW OF CLIENT*/
 Btn_cadastrar.addEventListener("click", () => {
@@ -24,6 +24,7 @@ btnCancelar.addEventListener("click", () => {
 /* SAVE BUTTON*/
 btn_save.addEventListener("click", () => {
   let createFormLi = document.createElement("li");
+  createFormLi.classList.add("FormLi");
   createFormLi.innerHTML = ` 
 
  <div class="client-nome"> 
@@ -48,7 +49,7 @@ btn_save.addEventListener("click", () => {
  
  <div class="Lapis_X_Salve">
 
-        <span class="remove" onclick="removeForm(this)">❌</span>
+        <button type="button" class="remove" onclick="removeForm(this)">❌</button>
 
         <button type="button" class="btn_edit" onclick="EditForm(this)">✏️</button>
 

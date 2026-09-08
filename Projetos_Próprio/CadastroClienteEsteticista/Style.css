@@ -3,10 +3,19 @@
   padding: 0;
   box-sizing: border-box;
 }
+h1{
+  color:white ;
+  shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+body{
+  background-color: bisque
+}
 
 /*PAINEL*/
 .ContainerPainel {
-  border: 1px solid black;
+  border: 1px solid white;
+  shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -18,7 +27,7 @@
   flex-direction: column;
   max-width: 70%;
   margin: 0 auto;
-  border: 1px solid black;
+  
 }
 #titulo {
   text-align: center;
@@ -36,7 +45,7 @@
 
 /*JANELA DO FORMULÁRIO DO CLIENTE*/
 .Janela_cliente {
-  background-color: red;
+  background-color: white;
   width: 30%;
   opacity: 1;
   position: absolute;
@@ -93,7 +102,12 @@
 li {
   display: flex;
   flex-direction: column;
-  border: 1px solid blue;
+  flex-wrap: wrap;
+  word-break: break-word;
+  margin-bottom: 20px;
+  background-color: whitesmoke;
+  border-radius: 10px;
+  padding: 10px;
   gap: 10px;
 }
 
@@ -103,16 +117,13 @@ li {
   gap: 10px;
 }
 
-.remove {
-  cursor: pointer;
-}
-
+.remove,
 .btn_edit {
-  cursor: pointer;
-  width: 10%;
 }
 
 .Edit_Sucess {
   cursor: pointer;
-  width: 10%;
+}
+
+.FormLi {
 }
