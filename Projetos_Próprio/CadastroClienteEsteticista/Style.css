@@ -3,23 +3,27 @@
   padding: 0;
   box-sizing: border-box;
 }
-h1{
-  color:white ;
-  shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+h1 {
+  color: #8b4513;
+ 
 }
 
-body{
-  background-color: bisque
+body {
+  background-color: bisque;
 }
 
 /*PAINEL*/
 .ContainerPainel {
-  border: 1px solid white;
-  shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  border: none;
+  border: 1px solid #ccc;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
+  padding-top: 10px;
+  padding-left: 10px;
+  padding-bottom: 10px;
 }
 
 .ContainerListaPessoas {
@@ -27,7 +31,6 @@ body{
   flex-direction: column;
   max-width: 70%;
   margin: 0 auto;
-  
 }
 #titulo {
   text-align: center;
@@ -43,14 +46,35 @@ body{
   cursor: pointer;
 }
 
+.ContainerBarraDeInput {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 30px;
+  width: 50%;
+}
+input {
+  height: 25px;
+  width: 80%;
+  background-color: #fff8dc;
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+
 /*JANELA DO FORMULÁRIO DO CLIENTE*/
 .Janela_cliente {
-  background-color: white;
+  background-color: #F08080;
   width: 30%;
   opacity: 1;
   position: absolute;
-  left: 66%;
-  bottom: 30%;
+  left: 67%;
+  bottom: 28%;
+  border-radius: 10px;
+  color: white;
+  padding-top: 10px;
+  padding-left: 10px;
 }
 .FechaJanela {
   opacity: 0;
@@ -69,7 +93,7 @@ body{
   width: 70%;
 }
 .Janela_cliente textarea {
-  width: 85%;
+  width: 95%;
   height: 150px;
   resize: none;
 }
@@ -102,13 +126,13 @@ body{
 li {
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
   word-break: break-word;
   margin-bottom: 20px;
-  background-color: whitesmoke;
+  background-color: #cd853f;
   border-radius: 10px;
   padding: 10px;
-  gap: 10px;
+  gap: 25px;
+  color: #f5deb3;
 }
 
 .Lapis_X_Salve {
