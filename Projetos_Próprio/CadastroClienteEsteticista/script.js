@@ -7,7 +7,7 @@ const inputEmail = document.querySelector("#email");
 const inputTelefone = document.querySelector("#telefone");
 const inputText = document.querySelector("#textClient");
 const btnCancelar = document.querySelector("#btn-cancelar");
-
+let clientesArray = [];
 
 /* SHOWING WINDOW OF CLIENT*/
 Btn_cadastrar.addEventListener("click", () => {
@@ -19,10 +19,22 @@ btnCancelar.addEventListener("click", () => {
   Janela_cliente.classList.toggle("FechaJanela");
 });
 
-
-
 /* SAVE BUTTON*/
 btn_save.addEventListener("click", () => {
+  
+  /*Local Store */
+  let Cliente = {
+    nome: inputName.value,
+    cpf: inputCpf.value,
+    email: inputEmail.value,
+    telefone: inputTelefone.value,
+    texto: inputText.value,
+  };
+
+  clientesArray.push(Cliente);
+
+  localStorage.setItem("clientes", JSON.stringify(clientesArray));
+
   let createFormLi = document.createElement("li");
   createFormLi.classList.add("FormLi");
   createFormLi.innerHTML = ` 
@@ -68,22 +80,20 @@ btn_save.addEventListener("click", () => {
 
 /* REMOVE LIST OF PEOPLE*/
 const removeForm = (e) => {
+  const Confirmar = confirm("Deseja realmente excluir este cliente ?");
 
-  const Confirmar = confirm("Deseja realmente excluir este cliente ?")
-
-  if(Confirmar){
+  if (Confirmar) {
     e.closest("li").remove();
   }
 };
 
 /* EDIT LIST OF PEOPLE*/
 const EditForm = (e) => {
-
   const client = e.closest("li");
 
-    if (client.querySelector(".Edit_Sucess")) {
-        return;
-    }
+  if (client.querySelector(".Edit_Sucess")) {
+    return;
+  }
 
   const name = client.querySelector(".client-nome");
   const cpf = client.querySelector(".client-cpf");
@@ -129,23 +139,22 @@ const EditForm = (e) => {
   containerBotoes.appendChild(saveEditButton);
 
   saveEditButton.addEventListener("click", () => {
-
     const newName = name.querySelector("input").value;
     name.textContent = `Nome: ${newName}`;
 
     const newCpf = cpf.querySelector("input").value;
     cpf.textContent = `CPF: ${newCpf}`;
 
-   const newEmail = email.querySelector("input").value;
-   email.textContent = `Email: ${newEmail}`;
+    const newEmail = email.querySelector("input").value;
+    email.textContent = `Email: ${newEmail}`;
 
-   const NewTelefone = telefone.querySelector("input").value;
-   telefone.textContent = `Telefone: ${NewTelefone}`;
+    const NewTelefone = telefone.querySelector("input").value;
+    telefone.textContent = `Telefone: ${NewTelefone}`;
 
-   const newText = text.querySelector("textarea").value;
-   text.textContent = `Texto: ${newText}`;  
+    const newText = text.querySelector("textarea").value;
+    text.textContent = `Texto: ${newText}`;
 
-   editButton.style.display = "inline-block";
-   saveEditButton.remove();
+    editButton.style.display = "inline-block";
+    saveEditButton.remove();
   });
 };
