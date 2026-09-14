@@ -39,8 +39,12 @@ body {
   padding-bottom: 60px;
 }
 
+.ContainerRedeSociais{
+  display: flex;
+  gap: 15px;
+}
 .ImagemRedeSocial {
-  width: 30px;
+  width: 25px;
 }
 
 .ContainerCadastroPessoa .material-symbols-outlined {

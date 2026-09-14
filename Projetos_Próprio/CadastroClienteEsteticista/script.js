@@ -9,6 +9,30 @@ const inputText = document.querySelector("#textClient");
 const btnCancelar = document.querySelector("#btn-cancelar");
 let clientesArray = [];
 
+const ClientesSalvos = localStorage.getItem("clientes"); /*Pegando os dados salvos*/
+
+if (ClientesSalvos) { /*Verificando se os dados foram salvos*/
+  clientesArray = JSON.parse(ClientesSalvos); /*Convertendo os dados salvos*/
+}
+
+renderizarClientes()
+
+
+/* RENDERIZAR CLIENTES SALVADOS*/
+function renderizarClientes() {
+
+   const list = document.querySelector("#list_people");
+
+   list.innerHTML = "";
+
+   clientesArray.forEach((e)=>{
+
+     console.log(e.nome);
+
+   })
+     
+}
+
 /* SHOWING WINDOW OF CLIENT*/
 Btn_cadastrar.addEventListener("click", () => {
   Janela_cliente.classList.toggle("FechaJanela");
@@ -31,9 +55,9 @@ btn_save.addEventListener("click", () => {
     texto: inputText.value,
   };
 
-  clientesArray.push(Cliente);
+  clientesArray.push(Cliente); /* Adicionando os dados ao array */
+  localStorage.setItem("clientes", JSON.stringify(clientesArray)); /*Salvando os dados, no local storage no formato JSON*/
 
-  localStorage.setItem("clientes", JSON.stringify(clientesArray));
 
   let createFormLi = document.createElement("li");
   createFormLi.classList.add("FormLi");
