@@ -9,28 +9,58 @@ const inputText = document.querySelector("#textClient");
 const btnCancelar = document.querySelector("#btn-cancelar");
 let clientesArray = [];
 
-const ClientesSalvos = localStorage.getItem("clientes"); /*Pegando os dados salvos*/
+const ClientesSalvos =
+  localStorage.getItem("clientes"); /*Pegando os dados salvos*/
 
-if (ClientesSalvos) { /*Verificando se os dados foram salvos*/
+if (ClientesSalvos) {
+  /*Verificando se os dados foram salvos*/
   clientesArray = JSON.parse(ClientesSalvos); /*Convertendo os dados salvos*/
 }
 
-renderizarClientes()
-
+renderizarClientes();
 
 /* RENDERIZAR CLIENTES SALVADOS*/
 function renderizarClientes() {
 
-   const list = document.querySelector("#list_people");
+  const list = document.querySelector("#list_people");
 
-   list.innerHTML = "";
+  list.innerHTML = "";
 
-   clientesArray.forEach((e)=>{
+  clientesArray.forEach((cliente) => {
 
-     console.log(e.nome);
+    let createFormLi = document.createElement("li");
+    createFormLi.classList.add("FormLi");
 
-   })
-     
+    createFormLi.innerHTML = `<div class="client-nome"> 
+ Nome: ${cliente.nome}
+ </div>
+
+ <div class="client-cpf">
+  CPF: ${cliente.cpf}
+  </div>
+
+ <div class="client-email">
+  Email: ${cliente.email}
+  </div>
+
+ <div class="client-telefone">
+  Telefone: ${cliente.telefone}
+  </div>
+
+ <div class="client-texto"> 
+ Texto: ${cliente.texto}</div>
+
+ 
+ <div class="Lapis_X_Salve">
+
+        <button type="button" class="remove" onclick="removeForm(this)">❌</button>
+
+        <button type="button" class="btn_edit" onclick="EditForm(this)">✏️</button>
+
+    </div>`;
+
+    list.appendChild(createFormLi);
+  });
 }
 
 /* SHOWING WINDOW OF CLIENT*/
@@ -45,7 +75,6 @@ btnCancelar.addEventListener("click", () => {
 
 /* SAVE BUTTON*/
 btn_save.addEventListener("click", () => {
-  
   /*Local Store */
   let Cliente = {
     nome: inputName.value,
@@ -56,24 +85,26 @@ btn_save.addEventListener("click", () => {
   };
 
   clientesArray.push(Cliente); /* Adicionando os dados ao array */
-  localStorage.setItem("clientes", JSON.stringify(clientesArray)); /*Salvando os dados, no local storage no formato JSON*/
-
+  localStorage.setItem(
+    "clientes",
+    JSON.stringify(clientesArray),
+  ); /*Salvando os dados, no local storage no formato JSON*/
 
   let createFormLi = document.createElement("li");
   createFormLi.classList.add("FormLi");
   createFormLi.innerHTML = ` 
 
- <div class="client-nome"> 
- Nome: ${inputName.value}
- </div>
+   <div class="client-nome"> 
+    Nome: ${inputName.value}
+    </div>
 
- <div class="client-cpf">
-  CPF: ${inputCpf.value}
-  </div>
+    <div class="client-cpf">
+    CPF: ${inputCpf.value}
+    </div>
 
- <div class="client-email">
-  Email: ${inputEmail.value}
-  </div>
+   <div class="client-email">
+    Email: ${inputEmail.value}
+    </div>
 
  <div class="client-telefone">
   Telefone: ${inputTelefone.value}
