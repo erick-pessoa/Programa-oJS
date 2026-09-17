@@ -21,13 +21,11 @@ renderizarClientes();
 
 /* RENDERIZAR CLIENTES SALVADOS*/
 function renderizarClientes() {
-
   const list = document.querySelector("#list_people");
 
   list.innerHTML = "";
 
   clientesArray.forEach((cliente) => {
-
     let createFormLi = document.createElement("li");
     createFormLi.classList.add("FormLi");
 
@@ -139,6 +137,9 @@ const removeForm = (e) => {
 
   if (Confirmar) {
     e.closest("li").remove();
+    clientesArray.forEach((cliente, index) => {
+      clientesArray.splice(index, 1);
+    });
   }
 };
 
