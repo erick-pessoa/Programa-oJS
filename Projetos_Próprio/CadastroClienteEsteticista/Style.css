@@ -147,13 +147,8 @@ li {
   gap: 10px;
 }
 
-.remove,
-.btn_edit {
-}
-
 .Edit_Sucess {
   cursor: pointer;
 }
 
-.FormLi {
-}
+

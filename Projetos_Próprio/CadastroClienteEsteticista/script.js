@@ -25,35 +25,35 @@ function renderizarClientes() {
 
   list.innerHTML = "";
 
-  clientesArray.forEach((cliente) => {
+  clientesArray.forEach((cliente, index) => {
     let createFormLi = document.createElement("li");
     createFormLi.classList.add("FormLi");
 
     createFormLi.innerHTML = `<div class="client-nome"> 
- Nome: ${cliente.nome}
- </div>
+        Nome: ${cliente.nome}
+        </div>
 
- <div class="client-cpf">
-  CPF: ${cliente.cpf}
-  </div>
+        <div class="client-cpf">
+        CPF: ${cliente.cpf}
+        </div>
 
- <div class="client-email">
-  Email: ${cliente.email}
-  </div>
+        <div class="client-email">
+        Email: ${cliente.email}
+         </div>
 
- <div class="client-telefone">
-  Telefone: ${cliente.telefone}
-  </div>
+        <div class="client-telefone">
+        Telefone: ${cliente.telefone}
+        </div>
 
- <div class="client-texto"> 
- Texto: ${cliente.texto}</div>
+        <div class="client-texto"> 
+        Texto: ${cliente.texto}</div>
 
  
- <div class="Lapis_X_Salve">
+        <div class="Lapis_X_Salve">
 
-        <button type="button" class="remove" onclick="removeForm(this)">❌</button>
+        <button type="button" class="remove" onclick="removeForm(${index})">❌</button>
 
-        <button type="button" class="btn_edit" onclick="EditForm(this)">✏️</button>
+        <button type="button" class="btn_edit" onclick="EditForm(this,${index})">✏️</button>
 
     </div>`;
 
@@ -73,8 +73,20 @@ btnCancelar.addEventListener("click", () => {
 
 /* SAVE BUTTON*/
 btn_save.addEventListener("click", () => {
+
+  /* Verificando se todos os campos foram preenchidos */
+  if (
+    inputName.value === "" ||
+    inputCpf.value === "" ||
+    inputEmail.value === "" ||
+    inputTelefone.value === "" ||
+    inputText.value === ""
+  ) {
+    alert("Preencha todos os campos!");
+  }
+  
   /*Local Store */
-  let Cliente = {
+  let cliente = {
     nome: inputName.value,
     cpf: inputCpf.value,
     email: inputEmail.value,
@@ -82,69 +94,33 @@ btn_save.addEventListener("click", () => {
     texto: inputText.value,
   };
 
-  clientesArray.push(Cliente); /* Adicionando os dados ao array */
-  localStorage.setItem(
-    "clientes",
-    JSON.stringify(clientesArray),
-  ); /*Salvando os dados, no local storage no formato JSON*/
-
-  let createFormLi = document.createElement("li");
-  createFormLi.classList.add("FormLi");
-  createFormLi.innerHTML = ` 
-
-   <div class="client-nome"> 
-    Nome: ${inputName.value}
-    </div>
-
-    <div class="client-cpf">
-    CPF: ${inputCpf.value}
-    </div>
-
-   <div class="client-email">
-    Email: ${inputEmail.value}
-    </div>
-
- <div class="client-telefone">
-  Telefone: ${inputTelefone.value}
-  </div>
-
- <div class="client-texto"> 
- Texto: ${inputText.value}</div>
-
- 
- <div class="Lapis_X_Salve">
-
-        <button type="button" class="remove" onclick="removeForm(this)">❌</button>
-
-        <button type="button" class="btn_edit" onclick="EditForm(this)">✏️</button>
-
-    </div>
-
- `;
-
-  document.querySelector("#list_people").appendChild(createFormLi);
-
-  document.querySelector("#nome").value = "";
-  document.querySelector("#cpf").value = "";
-  document.querySelector("#email").value = "";
-  document.querySelector("#telefone").value = "";
-  document.querySelector("#textClient").value = "";
+  clientesArray.push(cliente);
+  localStorage.setItem("clientes", JSON.stringify(clientesArray));
+  
+  renderizarClientes();
+  
+  inputName.value = "";
+  inputCpf.value = "";
+  inputEmail.value = "";
+  inputTelefone.value = "";
+  inputText.value = "";
+  
+  Janela_cliente.classList.add("FechaJanela");
 });
 
 /* REMOVE LIST OF PEOPLE*/
-const removeForm = (e) => {
+const removeForm = (index) => {
   const Confirmar = confirm("Deseja realmente excluir este cliente ?");
 
   if (Confirmar) {
-    e.closest("li").remove();
-    clientesArray.forEach((cliente, index) => {
-      clientesArray.splice(index, 1);
-    });
+    clientesArray.splice(index, 1);
+    localStorage.setItem("clientes", JSON.stringify(clientesArray));
+    renderizarClientes();
   }
 };
 
 /* EDIT LIST OF PEOPLE*/
-const EditForm = (e) => {
+const EditForm = (e, index) => {
   const client = e.closest("li");
 
   if (client.querySelector(".Edit_Sucess")) {
@@ -195,22 +171,16 @@ const EditForm = (e) => {
   containerBotoes.appendChild(saveEditButton);
 
   saveEditButton.addEventListener("click", () => {
-    const newName = name.querySelector("input").value;
-    name.textContent = `Nome: ${newName}`;
+    clientesArray[index].nome = name.querySelector("input").value;
+    clientesArray[index].cpf = cpf.querySelector("input").value;
+    clientesArray[index].email = email.querySelector("input").value;
+    clientesArray[index].telefone = telefone.querySelector("input").value;
+    clientesArray[index].texto = text.querySelector("textarea").value;
 
-    const newCpf = cpf.querySelector("input").value;
-    cpf.textContent = `CPF: ${newCpf}`;
+    localStorage.setItem("clientes", JSON.stringify(clientesArray));
 
-    const newEmail = email.querySelector("input").value;
-    email.textContent = `Email: ${newEmail}`;
-
-    const NewTelefone = telefone.querySelector("input").value;
-    telefone.textContent = `Telefone: ${NewTelefone}`;
-
-    const newText = text.querySelector("textarea").value;
-    text.textContent = `Texto: ${newText}`;
-
-    editButton.style.display = "inline-block";
-    saveEditButton.remove();
+    renderizarClientes();
   });
 };
+
+/* Search client*/
