@@ -6,6 +6,7 @@ const inputCpf = document.querySelector("#cpf");
 const inputEmail = document.querySelector("#email");
 const inputTelefone = document.querySelector("#telefone");
 const inputText = document.querySelector("#textClient");
+const inputPesquisa = document.querySelector("#pesquisa");
 const btnCancelar = document.querySelector("#btn-cancelar");
 let clientesArray = [];
 
@@ -17,16 +18,20 @@ if (ClientesSalvos) {
   clientesArray = JSON.parse(ClientesSalvos); /*Convertendo os dados salvos*/
 }
 
-renderizarClientes();
+renderizarClientes(clientesArray);
 
 /* RENDERIZAR CLIENTES SALVADOS*/
-function renderizarClientes() {
+
+function renderizarClientes(clientes) {
+
   const list = document.querySelector("#list_people");
 
   list.innerHTML = "";
 
-  clientesArray.forEach((cliente, index) => {
+  clientes.forEach((cliente, index) => {
+
     let createFormLi = document.createElement("li");
+
     createFormLi.classList.add("FormLi");
 
     createFormLi.innerHTML = `<div class="client-nome"> 
@@ -73,7 +78,6 @@ btnCancelar.addEventListener("click", () => {
 
 /* SAVE BUTTON*/
 btn_save.addEventListener("click", () => {
-
   /* Verificando se todos os campos foram preenchidos */
   if (
     inputName.value === "" ||
@@ -84,7 +88,7 @@ btn_save.addEventListener("click", () => {
   ) {
     alert("Preencha todos os campos!");
   }
-  
+
   /*Local Store */
   let cliente = {
     nome: inputName.value,
@@ -96,15 +100,15 @@ btn_save.addEventListener("click", () => {
 
   clientesArray.push(cliente);
   localStorage.setItem("clientes", JSON.stringify(clientesArray));
-  
-  renderizarClientes();
-  
+
+  renderizarClientes(clientesArray);
+
   inputName.value = "";
   inputCpf.value = "";
   inputEmail.value = "";
   inputTelefone.value = "";
   inputText.value = "";
-  
+
   Janela_cliente.classList.add("FechaJanela");
 });
 
@@ -113,9 +117,11 @@ const removeForm = (index) => {
   const Confirmar = confirm("Deseja realmente excluir este cliente ?");
 
   if (Confirmar) {
+
     clientesArray.splice(index, 1);
     localStorage.setItem("clientes", JSON.stringify(clientesArray));
-    renderizarClientes();
+
+    renderizarClientes(clientesArray);
   }
 };
 
@@ -179,8 +185,21 @@ const EditForm = (e, index) => {
 
     localStorage.setItem("clientes", JSON.stringify(clientesArray));
 
-    renderizarClientes();
+    renderizarClientes(clientesArray);
   });
 };
 
 /* Search client*/
+
+inputPesquisa.addEventListener("input", () => {
+
+  const pesquisa = inputPesquisa.value.toLowerCase();
+
+  const clientesFiltrados = clientesArray.filter(
+    (cliente) =>
+      cliente.nome.toLowerCase().includes(pesquisa) ||
+      cliente.cpf.toLowerCase().includes(pesquisa),
+  );
+  
+  renderizarClientes(clientesFiltrados);
+});
