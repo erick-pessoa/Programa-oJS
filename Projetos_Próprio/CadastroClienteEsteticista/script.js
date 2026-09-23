@@ -56,9 +56,9 @@ function renderizarClientes(clientes) {
  
         <div class="Lapis_X_Salve">
 
-        <button type="button" class="remove" onclick="removeForm(${index})">❌</button>
+        <button type="button" class="remove" onclick="removeForm(${cliente.id})">❌</button>
 
-        <button type="button" class="btn_edit" onclick="EditForm(this,${index})">✏️</button>
+        <button type="button" class="btn_edit" onclick="EditForm(this,${cliente.id})">✏️</button>
 
     </div>`;
 
@@ -91,6 +91,7 @@ btn_save.addEventListener("click", () => {
 
   /*Local Store */
   let cliente = {
+    id: Date.now(),
     nome: inputName.value,
     cpf: inputCpf.value,
     email: inputEmail.value,
@@ -113,12 +114,13 @@ btn_save.addEventListener("click", () => {
 });
 
 /* REMOVE LIST OF PEOPLE*/
-const removeForm = (index) => {
+const removeForm = (id) => {
   const Confirmar = confirm("Deseja realmente excluir este cliente ?");
 
   if (Confirmar) {
 
-    clientesArray.splice(index, 1);
+    clientesArray = 
+
     localStorage.setItem("clientes", JSON.stringify(clientesArray));
 
     renderizarClientes(clientesArray);
@@ -126,7 +128,8 @@ const removeForm = (index) => {
 };
 
 /* EDIT LIST OF PEOPLE*/
-const EditForm = (e, index) => {
+const EditForm = (e, id) => {
+
   const client = e.closest("li");
 
   if (client.querySelector(".Edit_Sucess")) {
