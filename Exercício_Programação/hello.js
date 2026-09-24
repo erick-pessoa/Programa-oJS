@@ -1,16 +1,11 @@
-function inaraamor() {
-  var amor = document.getElementsByTagName("h1");
+const pessoas = [
+  { id: 10, nome: "Ana" },
+  { id: 20, nome: "Bia" },
+  { id: 30, nome: "Carla" },
+];
 
-  for (var i = 0; i < amor.length; i++) {
-    amor[i].style.backgroundColor = "yellow";
-  }
-}
+const procura = pessoas.find(pessoa => pessoa.id === 20);
 
-function Remove() {
-  var amor = document.getElementsByTagName("h1");
+procura.nome = "Beatriz";
 
-  for (var i = 0; i < amor.length; i++) {
-    amor[i].style.backgroundColor = "" ;
-  }
-
-}
+console.log(pessoas);

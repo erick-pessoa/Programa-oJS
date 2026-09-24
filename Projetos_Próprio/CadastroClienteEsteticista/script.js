@@ -87,6 +87,7 @@ btn_save.addEventListener("click", () => {
     inputText.value === ""
   ) {
     alert("Preencha todos os campos!");
+    return;
   }
 
   /*Local Store */
@@ -118,12 +119,15 @@ const removeForm = (id) => {
   const Confirmar = confirm("Deseja realmente excluir este cliente ?");
 
   if (Confirmar) {
+    
 
-    clientesArray = 
+    clientesArray = clientesArray.filter(cliente => cliente.id !== id);
 
     localStorage.setItem("clientes", JSON.stringify(clientesArray));
 
     renderizarClientes(clientesArray);
+
+    console.log(clientesArray)
   }
 };
 
@@ -149,7 +153,7 @@ const EditForm = (e, id) => {
   const textText = text.textContent.replace("Texto: ", "");
 
   name.innerHTML = `Nome:
-    <input type="text" value="${nameText}"> 
+    <input type="text" placeholder="Nome do Cliente" value="${nameText}"> 
     `;
 
   cpf.innerHTML = `CPF:
@@ -180,11 +184,14 @@ const EditForm = (e, id) => {
   containerBotoes.appendChild(saveEditButton);
 
   saveEditButton.addEventListener("click", () => {
-    clientesArray[index].nome = name.querySelector("input").value;
-    clientesArray[index].cpf = cpf.querySelector("input").value;
-    clientesArray[index].email = email.querySelector("input").value;
-    clientesArray[index].telefone = telefone.querySelector("input").value;
-    clientesArray[index].texto = text.querySelector("textarea").value;
+   
+    const AddInforClient = clientesArray.find(item => item.id === id); 
+
+    AddInforClient.nome = name.querySelector("input").value;
+    AddInforClient.cpf = cpf.querySelector("input").value;
+    AddInforClient.email = email.querySelector("input").value;
+    AddInforClient.telefone = telefone.querySelector("input").value;
+    AddInforClient.textp = text.querySelector("textarea").value;
 
     localStorage.setItem("clientes", JSON.stringify(clientesArray));
 
