@@ -8,6 +8,7 @@ const inputTelefone = document.querySelector("#telefone");
 const inputText = document.querySelector("#textClient");
 const inputPesquisa = document.querySelector("#pesquisa");
 const btnCancelar = document.querySelector("#btn-cancelar");
+
 let clientesArray = [];
 
 const ClientesSalvos =
@@ -23,13 +24,11 @@ renderizarClientes(clientesArray);
 /* RENDERIZAR CLIENTES SALVADOS*/
 
 function renderizarClientes(clientes) {
-
   const list = document.querySelector("#list_people");
 
   list.innerHTML = "";
 
   clientes.forEach((cliente, index) => {
-
     let createFormLi = document.createElement("li");
 
     createFormLi.classList.add("FormLi");
@@ -76,6 +75,26 @@ btnCancelar.addEventListener("click", () => {
   Janela_cliente.classList.toggle("FechaJanela");
 });
 
+/* Remove caracteres nao alfanumericos*/
+inputName.addEventListener("input", () => {
+  inputName.value = inputName.value.replace(/[^A-Za-zÀ-ÖØ-öø-ÿ\s]/g, "");
+});
+
+inputCpf.addEventListener("input", () => {
+  inputCpf.value = inputCpf.value.replace(/[^0-9]/g, "");
+
+  if (inputCpf.value.length > 11) {
+    inputCpf.value = inputCpf.value.slice(0, 11);
+  }
+});
+
+inputTelefone.addEventListener("input", () => {
+  inputTelefone.value = inputTelefone.value.replace(/[^0-9]/g, "");
+  if (inputTelefone.value.length > 11) {
+    inputTelefone.value = inputTelefone.value.slice(0, 11);
+  }
+});
+
 /* SAVE BUTTON*/
 btn_save.addEventListener("click", () => {
   /* Verificando se todos os campos foram preenchidos */
@@ -119,21 +138,18 @@ const removeForm = (id) => {
   const Confirmar = confirm("Deseja realmente excluir este cliente ?");
 
   if (Confirmar) {
-    
-
-    clientesArray = clientesArray.filter(cliente => cliente.id !== id);
+    clientesArray = clientesArray.filter((cliente) => cliente.id !== id);
 
     localStorage.setItem("clientes", JSON.stringify(clientesArray));
 
     renderizarClientes(clientesArray);
 
-    console.log(clientesArray)
+    console.log(clientesArray);
   }
 };
 
 /* EDIT LIST OF PEOPLE*/
 const EditForm = (e, id) => {
-
   const client = e.closest("li");
 
   if (client.querySelector(".Edit_Sucess")) {
@@ -152,25 +168,40 @@ const EditForm = (e, id) => {
   const telefoneText = telefone.textContent.replace("Telefone: ", "");
   const textText = text.textContent.replace("Texto: ", "");
 
+  
   name.innerHTML = `Nome:
-    <input type="text" placeholder="Nome do Cliente" value="${nameText}"> 
-    `;
-
-  cpf.innerHTML = `CPF:
-  <input type="text" value="${cpfText}">
+  <input id="editeInputRemoveAlfanumericosName" type="text" placeholder="Nome do Cliente" value="${nameText}"> 
   `;
-
+  
+  cpf.innerHTML = `CPF:
+  <input id="editeInputRemoveAlfanumericosCpf" type="text" value="${cpfText}">
+  `;
+  
   email.innerHTML = `Email:
-    <input type="text" value="${emailText}">
-    `;
-
+  <input type="text" value="${emailText}">
+  `;
+  
   telefone.innerHTML = `Telefone:
-    <input type="text" value="${telefoneText}">
-    `;
-
+  <input type="text" value="${telefoneText}">
+  `;
+  
   text.innerHTML = `Texto:
-    <textarea>${textText}</textarea>
+  <textarea>${textText}</textarea>
     `;
+    
+   /* Remove caracteres nao alfanumericos do input edit*/
+  const editeInputRemoveAlfanumericosName = client.querySelector("#editeInputRemoveAlfanumericosName");
+  editeInputRemoveAlfanumericosName.addEventListener("input", () => {
+    editeInputRemoveAlfanumericosName.value = editeInputRemoveAlfanumericosName.value.replace(/[^A-Za-zÀ-ÖØ-öø-ÿ\s]/g, "");
+  });
+
+  const editeInputRemoveAlfanumericosCpf = client.querySelector("#editeInputRemoveAlfanumericosCpf");
+editeInputRemoveAlfanumericosCpf.addEventListener("input", () => { 
+    editeInputRemoveAlfanumericosCpf.value = editeInputRemoveAlfanumericosCpf.value.replace(/[^0-9]/g, "");
+  if (editeInputRemoveAlfanumericosCpf.value.length > 11) {
+    editeInputRemoveAlfanumericosCpf.value = editeInputRemoveAlfanumericosCpf.value.slice(0, 11);
+  }
+});
 
   const containerBotoes = client.querySelector(".Lapis_X_Salve");
   const editButton = containerBotoes.querySelector(".btn_edit");
@@ -183,15 +214,16 @@ const EditForm = (e, id) => {
 
   containerBotoes.appendChild(saveEditButton);
 
+
+
   saveEditButton.addEventListener("click", () => {
-   
-    const AddInforClient = clientesArray.find(item => item.id === id); 
+    const AddInforClient = clientesArray.find((item) => item.id === id);
 
     AddInforClient.nome = name.querySelector("input").value;
     AddInforClient.cpf = cpf.querySelector("input").value;
     AddInforClient.email = email.querySelector("input").value;
     AddInforClient.telefone = telefone.querySelector("input").value;
-    AddInforClient.textp = text.querySelector("textarea").value;
+    AddInforClient.texto = text.querySelector("textarea").value;
 
     localStorage.setItem("clientes", JSON.stringify(clientesArray));
 
@@ -202,7 +234,6 @@ const EditForm = (e, id) => {
 /* Search client*/
 
 inputPesquisa.addEventListener("input", () => {
-
   const pesquisa = inputPesquisa.value.toLowerCase();
 
   const clientesFiltrados = clientesArray.filter(
@@ -210,6 +241,6 @@ inputPesquisa.addEventListener("input", () => {
       cliente.nome.toLowerCase().includes(pesquisa) ||
       cliente.cpf.toLowerCase().includes(pesquisa),
   );
-  
+
   renderizarClientes(clientesFiltrados);
 });
