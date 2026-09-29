@@ -4,12 +4,13 @@
   box-sizing: border-box;
 }
 h1 {
-  color: #8b4513;
+  color: black;
+
  
 }
 
 body {
-  background-color: bisque;
+  background-color: 	white;
 }
 
 /*PAINEL*/
@@ -17,7 +18,7 @@ body {
   border: none;
   border: 1px solid #ccc;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
-  background-image: linear-gradient(315deg, rgba(247, 209, 24, 1) 0%, rgba(247, 25, 136, 1) 100%);
+  background-image: linear-gradient(315deg, rgba(247, 209, 24, 1) 0%, rgba(0,191,255) 100%);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -45,6 +46,7 @@ body {
 }
 .ImagemRedeSocial {
   width: 25px;
+  
 }
 
 .ContainerCadastroPessoa .material-symbols-outlined {
@@ -62,7 +64,7 @@ body {
 input {
   height: 25px;
   width: 80%;
-  background-color: #fff8dc;
+  background-color: white;
   border: none;
   border-radius: 10px;
   padding: 10px;
@@ -71,19 +73,19 @@ input {
 
 /*JANELA DO FORMULÁRIO DO CLIENTE*/
 .Janela_cliente {
-  background-color: #F08080;
-  width: 30%;
+  background-color: #00BFFF;
+  width: 20%;
   opacity: 1;
   position: absolute;
-  left: 67%;
-  bottom: 28%;
+  left: 76%;
+  bottom: 30%;
   border-radius: 10px;
   color: white;
   padding-top: 10px;
   padding-left: 10px;
 }
 .FechaJanela {
-  opacity: 0;
+  opacity: 1;
 }
 
 .Janela_cliente form {

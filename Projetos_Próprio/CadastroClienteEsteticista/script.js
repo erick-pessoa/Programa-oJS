@@ -97,15 +97,13 @@ inputTelefone.addEventListener("input", () => {
 
 /* SAVE BUTTON*/
 btn_save.addEventListener("click", () => {
+  
   /* Verificando se todos os campos foram preenchidos */
   if (
     inputName.value === "" ||
-    inputCpf.value === "" ||
-    inputEmail.value === "" ||
-    inputTelefone.value === "" ||
-    inputText.value === ""
+    inputCpf.value === "" 
   ) {
-    alert("Preencha todos os campos!");
+    alert("Preencha pelo menos nome e cpf !!");
     return;
   }
 
@@ -182,7 +180,7 @@ const EditForm = (e, id) => {
   `;
   
   telefone.innerHTML = `Telefone:
-  <input type="text" value="${telefoneText}">
+  <input id="removeEditAlfanumericoTelefone" type="text" value="${telefoneText}">
   `;
   
   text.innerHTML = `Texto:
@@ -198,11 +196,16 @@ const EditForm = (e, id) => {
   const editeInputRemoveAlfanumericosCpf = client.querySelector("#editeInputRemoveAlfanumericosCpf");
 editeInputRemoveAlfanumericosCpf.addEventListener("input", () => { 
     editeInputRemoveAlfanumericosCpf.value = editeInputRemoveAlfanumericosCpf.value.replace(/[^0-9]/g, "");
-  if (editeInputRemoveAlfanumericosCpf.value.length > 11) {
     editeInputRemoveAlfanumericosCpf.value = editeInputRemoveAlfanumericosCpf.value.slice(0, 11);
-  }
 });
 
+const removeEditAlfanumericoTelefone = client.querySelector("#removeEditAlfanumericoTelefone");
+removeEditAlfanumericoTelefone.addEventListener("input", () => {
+    removeEditAlfanumericoTelefone.value = removeEditAlfanumericoTelefone.value.replace(/[^0-9]/g, "");
+    removeEditAlfanumericoTelefone.value = removeEditAlfanumericoTelefone.value.slice(0, 11);
+});
+
+ 
   const containerBotoes = client.querySelector(".Lapis_X_Salve");
   const editButton = containerBotoes.querySelector(".btn_edit");
   editButton.style.display = "none";
