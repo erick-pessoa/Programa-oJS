@@ -5,12 +5,12 @@
 }
 h1 {
   color: black;
-
- 
+  padding-top: 100px;
+  font-size: clamp(2rem, 7vw, 3rem);
 }
 
 body {
-  background-color: 	white;
+  background-color: white;
 }
 
 /*PAINEL*/
@@ -18,8 +18,14 @@ body {
   border: none;
   border: 1px solid #ccc;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
-  background-image: linear-gradient(315deg, rgba(247, 209, 24, 1) 0%, rgba(0,191,255) 100%);
+  background-image: linear-gradient(
+    315deg,
+    rgba(255, 222, 173) 0%,
+    rgba(244, 164, 96) 100%
+  );
   display: flex;
+  width: 100%;
+  position: fixed;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 10px;
@@ -31,22 +37,22 @@ body {
 
 .ContainerListaPessoas {
   display: flex;
-  flex-direction: column;
-  max-width: 70%;
   margin: 0 auto;
+  width: clamp(300px, 70%, 500px);
+  flex-direction: column;
+
 }
 #titulo {
   text-align: center;
   padding-bottom: 60px;
 }
 
-.ContainerRedeSociais{
+.ContainerRedeSociais {
   display: flex;
   gap: 15px;
 }
 .ImagemRedeSocial {
-  width: 25px;
-  
+  width: 20px;
 }
 
 .ContainerCadastroPessoa .material-symbols-outlined {
@@ -70,22 +76,23 @@ input {
   padding: 10px;
 }
 
-
 /*JANELA DO FORMULÁRIO DO CLIENTE*/
 .Janela_cliente {
-  background-color: #00BFFF;
-  width: 20%;
+  background-color: #f4a460;
+  max-width: 250px;
+  width: 70%;
   opacity: 1;
-  position: absolute;
-  left: 76%;
-  bottom: 30%;
+  position: fixed;
+  top: 5%;
+  right: 3%;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
   border-radius: 10px;
   color: white;
   padding-top: 10px;
   padding-left: 10px;
 }
 .FechaJanela {
-  opacity: 1;
+  opacity: 0;
 }
 
 .Janela_cliente form {
@@ -133,14 +140,17 @@ input {
 
 li {
   display: flex;
+  width: 100%;
+  border: 1px solid red;
   flex-direction: column;
   word-break: break-word;
   margin-bottom: 20px;
   background-color: #cd853f;
   border-radius: 10px;
   padding: 10px;
-  gap: 25px;
+  gap: 15px;
   color: #f5deb3;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
 }
 
 .Lapis_X_Salve {
@@ -152,5 +162,3 @@ li {
 .Edit_Sucess {
   cursor: pointer;
 }
-
-
