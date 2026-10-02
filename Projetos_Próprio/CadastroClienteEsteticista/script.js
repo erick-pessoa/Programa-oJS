@@ -24,6 +24,7 @@ renderizarClientes(clientesArray);
 /* RENDERIZAR CLIENTES SALVADOS*/
 
 function renderizarClientes(clientes) {
+  
   const list = document.querySelector("#list_people");
 
   list.innerHTML = "";
@@ -55,9 +56,9 @@ function renderizarClientes(clientes) {
  
         <div class="Lapis_X_Salve">
 
-        <button type="button" class="remove" onclick="removeForm(${cliente.id})">❌</button>
+        <button type="button" class="remove" onclick="removeForm(${cliente.id})">Excluir</button>
 
-        <button type="button" class="btn_edit" onclick="EditForm(this,${cliente.id})">✏️</button>
+        <button type="button" class="btn_edit" onclick="EditForm(this,${cliente.id})">Editar</button>
 
     </div>`;
 
@@ -82,10 +83,7 @@ inputName.addEventListener("input", () => {
 
 inputCpf.addEventListener("input", () => {
   inputCpf.value = inputCpf.value.replace(/[^0-9]/g, "");
-
-  if (inputCpf.value.length > 11) {
-    inputCpf.value = inputCpf.value.slice(0, 11);
-  }
+  inputCpf.value = inputCpf.value.slice(0, 11);
 });
 
 inputTelefone.addEventListener("input", () => {
@@ -104,6 +102,11 @@ btn_save.addEventListener("click", () => {
     inputCpf.value === "" 
   ) {
     alert("Preencha pelo menos nome e cpf !!");
+    return;
+  }
+
+  if (inputCpf.value.length < 11){
+    alert("Preencha o CPF com 11 digitos !!");
     return;
   }
 
@@ -213,7 +216,7 @@ removeEditAlfanumericoTelefone.addEventListener("input", () => {
   const saveEditButton = document.createElement("button");
   saveEditButton.type = "button";
   saveEditButton.classList.add("Edit_Sucess");
-  saveEditButton.textContent = "✅";
+  saveEditButton.textContent = "Salvar";
 
   containerBotoes.appendChild(saveEditButton);
 

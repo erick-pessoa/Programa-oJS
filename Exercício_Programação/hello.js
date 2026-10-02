@@ -1,11 +1,9 @@
-const texto = "Maria123 Silva456";
-const texto2 = "Maria123!@# Silva";
+const emDição = new Set();
 
-const regex = /[0-9]/g; //regex para remover os numeros
-const regex2 = /[^A-Za-z\s]/g; //regex para remover os caracteres nao alfanumericos
-
-Resultado = texto.replace(regex, "");
-Resultado2 = texto2.replace(regex2, "");
-
-console.log("João da Conceição".replace(/[^A-Za-zÀ-ÖØ-öø-ÿ\s]/g, ""));
-
+console.log(emDição.add(10))//10
+console.log(emDição.add(20))//10,20
+console.log(emDição.has(10))//true
+console.log(emDição.has(30))//false
+console.log(emDição.delete(20))
+console.log(emDição.has(10))//true
+console.log(emDição.has(20))//false  

@@ -4,7 +4,7 @@
   box-sizing: border-box;
 }
 h1 {
-  color: black;
+  color: 	#DAA520;
   padding-top: 100px;
   font-size: clamp(2rem, 7vw, 3rem);
 }
@@ -141,15 +141,14 @@ input {
 li {
   display: flex;
   width: 100%;
-  border: 1px solid red;
   flex-direction: column;
   word-break: break-word;
   margin-bottom: 20px;
-  background-color: #cd853f;
+  background-color: #CD853F;
   border-radius: 10px;
   padding: 10px;
   gap: 15px;
-  color: #f5deb3;
+  color: #FFFAFA;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
 }
 
@@ -161,4 +160,17 @@ li {
 
 .Edit_Sucess {
   cursor: pointer;
+}
+.remove,.btn_edit,.Edit_Sucess{
+  cursor: pointer;
+  border: none;
+  color: #B8860B;
+  background-color: white;
+  border-radius: 10px;
+  padding: 5px;
+}
+
+.remove:hover,.btn_edit:hover,.Edit_Sucess:hover{
+  background-color: #B8860B;
+  color: white;
 }
