@@ -11,6 +11,8 @@ const btnCancelar = document.querySelector("#btn-cancelar");
 
 let clientesArray = [];
 
+const emEdicao = new Set();
+
 const ClientesSalvos =
   localStorage.getItem("clientes"); /*Pegando os dados salvos*/
 
@@ -64,6 +66,40 @@ function renderizarClientes(clientes) {
 
     list.appendChild(createFormLi);
   });
+}
+
+function criarCardEdicao(cliente) {
+  return `
+    <div class="client-nome">
+      Nome:
+      <input id="editNome-${cliente.id}" type="text" value="${cliente.nome}">
+    </div>
+
+    <div class="client-cpf">
+      CPF:
+      <input id="editCpf-${cliente.id}" type="text" value="${cliente.cpf}">
+    </div>
+
+    <div class="client-email">
+      Email:
+      <input id="editEmail-${cliente.id}" type="text" value="${cliente.email}">
+    </div>
+
+    <div class="client-telefone">
+      Telefone:
+      <input id="editTelefone-${cliente.id}" type="text" value="${cliente.telefone}">
+    </div>
+
+    <div class="client-texto">
+      Texto:
+      <textarea id="editTexto-${cliente.id}">${cliente.texto}</textarea>
+    </div>
+
+    <div class="Lapis_X_Salve">
+      <button type="button" class="remove" onclick="removeForm(${cliente.id})">Excluir</button>
+      <button type="button" class="Edit_Sucess" onclick="salvarEdicao(${cliente.id})">Salvar</button>
+    </div>
+  `;
 }
 
 /* SHOWING WINDOW OF CLIENT*/
@@ -155,7 +191,9 @@ const EditForm = (e, id) => {
 
   if (client.querySelector(".Edit_Sucess")) {
     return;
-  }
+  } 
+
+  emEdicao.add(id);
 
   const name = client.querySelector(".client-nome");
   const cpf = client.querySelector(".client-cpf");
@@ -230,6 +268,8 @@ removeEditAlfanumericoTelefone.addEventListener("input", () => {
     AddInforClient.email = email.querySelector("input").value;
     AddInforClient.telefone = telefone.querySelector("input").value;
     AddInforClient.texto = text.querySelector("textarea").value;
+
+    emEdicao.delete(id);
 
     localStorage.setItem("clientes", JSON.stringify(clientesArray));
 
