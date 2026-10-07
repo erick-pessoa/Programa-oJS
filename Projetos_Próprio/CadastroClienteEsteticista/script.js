@@ -33,9 +33,11 @@ function renderizarClientes(clientes) {
 
   clientes.forEach((cliente, index) => {
     let createFormLi = document.createElement("li");
-
     createFormLi.classList.add("FormLi");
 
+    if(emEdicao.has(cliente.id)){
+       createFormLi.innerHTML = criarCardEdicao(cliente);
+    } else{
     createFormLi.innerHTML = `<div class="client-nome"> 
         Nome: ${cliente.nome}
         </div>
@@ -60,11 +62,12 @@ function renderizarClientes(clientes) {
 
         <button type="button" class="remove" onclick="removeForm(${cliente.id})">Excluir</button>
 
-        <button type="button" class="btn_edit" onclick="EditForm(this,${cliente.id})">Editar</button>
+        <button type="button" class="btn_edit" onclick="EditForm(${cliente.id})">Editar</button>
 
     </div>`;
 
     list.appendChild(createFormLi);
+    }
   });
 }
 
@@ -100,6 +103,30 @@ function criarCardEdicao(cliente) {
       <button type="button" class="Edit_Sucess" onclick="salvarEdicao(${cliente.id})">Salvar</button>
     </div>
   `;
+}
+
+const salvarEdicao = (id)=>{
+
+  const AddInforClient = clientesArray.find((item)=>item.id===id);
+
+  const clientEditNome = document.querySelector(`#editNome-${id}`);
+  const clientEditCpf = document.querySelector(`#editCpf-${id}`);
+  const clientEditEmail = document.querySelector(`#editEmail-${id}`);
+  const clientEditTelefone = document.querySelector(`#editTelefone-${id}`);
+  const clientEditTexto = document.querySelector(`#editTexto-${id}`);
+
+  AddInforClient.nome = clientEditNome.value;
+  AddInforClient.cpf = clientEditCpf.value;
+  AddInforClient.email = clientEditEmail.value;
+  AddInforClient.telefone = clientEditTelefone.value;
+  AddInforClient.texto = clientEditTexto.value;
+
+  localStorage.setItem("clientes", JSON.stringify(clientesArray));
+
+  emEdicao.delete(id);
+
+  renderizarClientes (clientesArray);
+
 }
 
 /* SHOWING WINDOW OF CLIENT*/
@@ -172,109 +199,24 @@ btn_save.addEventListener("click", () => {
 
 /* REMOVE LIST OF PEOPLE*/
 const removeForm = (id) => {
+
   const Confirmar = confirm("Deseja realmente excluir este cliente ?");
 
   if (Confirmar) {
+
     clientesArray = clientesArray.filter((cliente) => cliente.id !== id);
 
     localStorage.setItem("clientes", JSON.stringify(clientesArray));
 
     renderizarClientes(clientesArray);
-
-    console.log(clientesArray);
   }
 };
 
 /* EDIT LIST OF PEOPLE*/
-const EditForm = (e, id) => {
-  const client = e.closest("li");
-
-  if (client.querySelector(".Edit_Sucess")) {
-    return;
-  } 
-
+const EditForm = (id) => {
+  
   emEdicao.add(id);
-
-  const name = client.querySelector(".client-nome");
-  const cpf = client.querySelector(".client-cpf");
-  const email = client.querySelector(".client-email");
-  const telefone = client.querySelector(".client-telefone");
-  const text = client.querySelector(".client-texto");
-
-  const nameText = name.textContent.replace("Nome: ", "");
-  const cpfText = cpf.textContent.replace("CPF: ", "");
-  const emailText = email.textContent.replace("Email: ", "");
-  const telefoneText = telefone.textContent.replace("Telefone: ", "");
-  const textText = text.textContent.replace("Texto: ", "");
-
-  
-  name.innerHTML = `Nome:
-  <input id="editeInputRemoveAlfanumericosName" type="text" placeholder="Nome do Cliente" value="${nameText}"> 
-  `;
-  
-  cpf.innerHTML = `CPF:
-  <input id="editeInputRemoveAlfanumericosCpf" type="text" value="${cpfText}">
-  `;
-  
-  email.innerHTML = `Email:
-  <input type="text" value="${emailText}">
-  `;
-  
-  telefone.innerHTML = `Telefone:
-  <input id="removeEditAlfanumericoTelefone" type="text" value="${telefoneText}">
-  `;
-  
-  text.innerHTML = `Texto:
-  <textarea>${textText}</textarea>
-    `;
-    
-   /* Remove caracteres nao alfanumericos do input edit*/
-  const editeInputRemoveAlfanumericosName = client.querySelector("#editeInputRemoveAlfanumericosName");
-  editeInputRemoveAlfanumericosName.addEventListener("input", () => {
-    editeInputRemoveAlfanumericosName.value = editeInputRemoveAlfanumericosName.value.replace(/[^A-Za-zÀ-ÖØ-öø-ÿ\s]/g, "");
-  });
-
-  const editeInputRemoveAlfanumericosCpf = client.querySelector("#editeInputRemoveAlfanumericosCpf");
-editeInputRemoveAlfanumericosCpf.addEventListener("input", () => { 
-    editeInputRemoveAlfanumericosCpf.value = editeInputRemoveAlfanumericosCpf.value.replace(/[^0-9]/g, "");
-    editeInputRemoveAlfanumericosCpf.value = editeInputRemoveAlfanumericosCpf.value.slice(0, 11);
-});
-
-const removeEditAlfanumericoTelefone = client.querySelector("#removeEditAlfanumericoTelefone");
-removeEditAlfanumericoTelefone.addEventListener("input", () => {
-    removeEditAlfanumericoTelefone.value = removeEditAlfanumericoTelefone.value.replace(/[^0-9]/g, "");
-    removeEditAlfanumericoTelefone.value = removeEditAlfanumericoTelefone.value.slice(0, 11);
-});
-
- 
-  const containerBotoes = client.querySelector(".Lapis_X_Salve");
-  const editButton = containerBotoes.querySelector(".btn_edit");
-  editButton.style.display = "none";
-
-  const saveEditButton = document.createElement("button");
-  saveEditButton.type = "button";
-  saveEditButton.classList.add("Edit_Sucess");
-  saveEditButton.textContent = "Salvar";
-
-  containerBotoes.appendChild(saveEditButton);
-
-
-
-  saveEditButton.addEventListener("click", () => {
-    const AddInforClient = clientesArray.find((item) => item.id === id);
-
-    AddInforClient.nome = name.querySelector("input").value;
-    AddInforClient.cpf = cpf.querySelector("input").value;
-    AddInforClient.email = email.querySelector("input").value;
-    AddInforClient.telefone = telefone.querySelector("input").value;
-    AddInforClient.texto = text.querySelector("textarea").value;
-
-    emEdicao.delete(id);
-
-    localStorage.setItem("clientes", JSON.stringify(clientesArray));
-
-    renderizarClientes(clientesArray);
-  });
+  renderizarClientes(clientesArray);
 };
 
 /* Search client*/
