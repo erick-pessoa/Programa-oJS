@@ -26,19 +26,20 @@ renderizarClientes(clientesArray);
 /* RENDERIZAR CLIENTES SALVADOS*/
 
 function renderizarClientes(clientes) {
-  
   const list = document.querySelector("#list_people");
 
   list.innerHTML = "";
 
   clientes.forEach((cliente, index) => {
+
     let createFormLi = document.createElement("li");
     createFormLi.classList.add("FormLi");
 
-    if(emEdicao.has(cliente.id)){
-       createFormLi.innerHTML = criarCardEdicao(cliente);
-    } else{
-    createFormLi.innerHTML = `<div class="client-nome"> 
+    if (emEdicao.has(cliente.id)) {
+      createFormLi.innerHTML = criarCardEdicao(cliente);
+
+    } else {
+      createFormLi.innerHTML = `<div class="client-nome"> 
         Nome: ${cliente.nome}
         </div>
 
@@ -65,10 +66,12 @@ function renderizarClientes(clientes) {
         <button type="button" class="btn_edit" onclick="EditForm(${cliente.id})">Editar</button>
 
     </div>`;
-
-    list.appendChild(createFormLi);
-    }
+    
+  }
+  list.appendChild(createFormLi);
   });
+
+
 }
 
 function criarCardEdicao(cliente) {
@@ -105,9 +108,8 @@ function criarCardEdicao(cliente) {
   `;
 }
 
-const salvarEdicao = (id)=>{
-
-  const AddInforClient = clientesArray.find((item)=>item.id===id);
+const salvarEdicao = (id) => {
+  const AddInforClient = clientesArray.find((item) => item.id === id);
 
   const clientEditNome = document.querySelector(`#editNome-${id}`);
   const clientEditCpf = document.querySelector(`#editCpf-${id}`);
@@ -125,9 +127,8 @@ const salvarEdicao = (id)=>{
 
   emEdicao.delete(id);
 
-  renderizarClientes (clientesArray);
-
-}
+  renderizarClientes(clientesArray);
+};
 
 /* SHOWING WINDOW OF CLIENT*/
 Btn_cadastrar.addEventListener("click", () => {
@@ -158,17 +159,13 @@ inputTelefone.addEventListener("input", () => {
 
 /* SAVE BUTTON*/
 btn_save.addEventListener("click", () => {
-  
   /* Verificando se todos os campos foram preenchidos */
-  if (
-    inputName.value === "" ||
-    inputCpf.value === "" 
-  ) {
+  if (inputName.value === "" || inputCpf.value === "") {
     alert("Preencha pelo menos nome e cpf !!");
     return;
   }
 
-  if (inputCpf.value.length < 11){
+  if (inputCpf.value.length < 11) {
     alert("Preencha o CPF com 11 digitos !!");
     return;
   }
@@ -199,11 +196,9 @@ btn_save.addEventListener("click", () => {
 
 /* REMOVE LIST OF PEOPLE*/
 const removeForm = (id) => {
-
   const Confirmar = confirm("Deseja realmente excluir este cliente ?");
 
   if (Confirmar) {
-
     clientesArray = clientesArray.filter((cliente) => cliente.id !== id);
 
     localStorage.setItem("clientes", JSON.stringify(clientesArray));
@@ -214,9 +209,9 @@ const removeForm = (id) => {
 
 /* EDIT LIST OF PEOPLE*/
 const EditForm = (id) => {
-  
   emEdicao.add(id);
   renderizarClientes(clientesArray);
+  ativarListenersEdicao(id);
 };
 
 /* Search client*/
@@ -232,3 +227,26 @@ inputPesquisa.addEventListener("input", () => {
 
   renderizarClientes(clientesFiltrados);
 });
+
+
+/* Remove caracteres nao alfanumericos*/
+const ativarListenersEdicao = (id) =>{
+   
+  const inputNomeEdicao = document.querySelector( `#editNome-${id}`);
+  inputNomeEdicao.addEventListener("input",()=>{
+    inputNomeEdicao.value = inputNomeEdicao.value.replace(/[^A-Za-zÀ-ÖØ-öø-ÿ\s]/g, "");
+  })
+
+  const inputCpfEdicao = document.querySelector( `#editCpf-${id}`);
+  inputCpfEdicao.addEventListener("input",()=>{
+    inputCpfEdicao.value = inputCpfEdicao.value.replace(/[^0-9]/g, "");
+    inputCpfEdicao.value = inputCpfEdicao.value.slice(0,11)
+  })
+
+  const inputTelefoneEdicao = document.querySelector( `#editTelefone-${id}`);
+  inputTelefoneEdicao.addEventListener("input",()=>{
+    inputTelefoneEdicao.value = inputTelefoneEdicao.value.replace(/[^0-9]/g, "");
+    inputTelefoneEdicao.value = inputTelefoneEdicao.value.slice(0,11)
+    
+  })
+}
