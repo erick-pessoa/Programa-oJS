@@ -122,6 +122,36 @@
 // })
 // console.log(soma);
 
+//17º Exercício
+// const frutas = ["Banana", "Maçã", "Uva"];
+
+// for(i=0;i<frutas.length;i++){
+//     console.log("Posição "+i+": "+frutas[i]);
+// }
+
+// 18º Exercício
+// const frutas = [""]
+// const devolucao = (item) =>{
+//      for(i=0;i<item.length;i++){
+//         if(item[i].length === 0){
+//             return true;
+//         }else{
+//             return false;
+//         }
+//      }
+// }
+// console.log(devolucao(frutas));
+
+// 19º Exercício
+// const numbers = [1, 1, 1, 1, 6];
+
+// const resultado = numbers.map(item => item*2)
+
+// console.log(resultado)
+
+// 20º Exercício
+// const numbers = ["Banana", "Maçã", "Uva"]
+// console.log(numbers.includes("Banana"))
 
 
 
