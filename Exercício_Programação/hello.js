@@ -153,6 +153,48 @@
 // const numbers = ["Banana", "Maçã", "Uva"]
 // console.log(numbers.includes("Banana"))
 
+// 21º Exercício
+// const numbers = [1, 1, 1, 1, 6];
+// const numerosPares = numbers.filter(item=> item%2===0)
+// console.log(numerosPares)
 
+// 22º Exercício
+// const numbers = [1, 1, 1, 1, 6,4,5,6,7,8,9,10];
+// const numerosPares = numbers.filter(item=> item>3)
+// console.log(numerosPares)
 
+// 23º Exercício
+// const pessoas = [{nome: "Ana", idade: 20}, {nome: "Bia", idade:15}]
+// const pessoasMaiores = pessoas.filter(pessoa => pessoa.idade > 18)
+// console.log(pessoasMaiores)
 
+// 24º Exercício
+// const arrayMisto = [42, null, "texto", undefined, 0, false, "", null]
+// const resultArray = arrayMisto.filter(item => item !== null && item !== undefined)
+// console.log(resultArray)
+
+// 25º Exercício
+// const arrayMisto = [10, "Banana", 42, "Abacaxi", true, "Laranja", 7]
+// const resultArray = arrayMisto.filter(item => typeof item === "string")
+// console.log(resultArray)
+
+// 26º Exercício
+// const produtos = [
+//   { nome: 'Camiseta', preco: 50 },
+//   { nome: 'Calça Jeans', preco: 120 },
+//   { nome: 'Meias', preco: 20 },
+//   { nome: 'Tênis', preco: 250 },
+//   { nome: 'Boné', preco: 80 }
+// ];
+// const produtosMaiores = produtos.filter(item => item.preco >100)
+// console.log(produtosMaiores)
+
+// 27º Exercício
+// const nomes = ['Ana', 'Bruno', 'Alice', 'Carlos', 'Amanda'];
+// const NomeComA = nomes.filter(item => item.startsWith('A'))
+// console.log(NomeComA)
+
+// 28º Exercício
+// • O propósito do filter é operar sobre uma lista e gerar uma nova lista modificada. Para o desenvolvedor que está escrevendo o 
+// código, o retorno precisa ser previsível. Se ele retornasse null, undefined ou false 
+// quando nenhum item passasse no teste, o programa exigiria uma validação extra (como um if) antes de qualquer outra operação.
