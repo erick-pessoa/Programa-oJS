@@ -198,3 +198,45 @@
 // • O propósito do filter é operar sobre uma lista e gerar uma nova lista modificada. Para o desenvolvedor que está escrevendo o 
 // código, o retorno precisa ser previsível. Se ele retornasse null, undefined ou false 
 // quando nenhum item passasse no teste, o programa exigiria uma validação extra (como um if) antes de qualquer outra operação.
+
+//29° Exercício
+// const usuarios = [
+//   { id: 1, nome: 'Ana' },
+//   { id: 2, nome: 'Bruno' },
+//   { id: 3, nome: 'Carla' }
+// ];
+// const removerUsuario = usuarios.filter((item) =>item.id !== 2)
+// console.log(removerUsuario)
+
+//30° Exercício
+// const numeroImpar = [10, 15, 22, 33, 40, 55];
+// const numerosImpares = numeroImpar.filter(item => item % 2 === 1 )
+// console.log(numerosImpares)
+
+//31° Exercício
+// const clientes = [
+//   { id: 10, nome: 'Ana' },
+//   { id: 20, nome: 'Carlos' },
+//   { id: 30, nome: 'Beatriz' }
+// ];
+// const clientesId20 = clientes.find(cliente => cliente.id === 20)
+// console.log(clientesId20)
+
+//32° Exercício
+// const númeroMaior = [10, 15, 22, 33, 40, 55]
+// const númerosMaiores = númeroMaior.find(item => item >18)
+// console.log(númerosMaiores)
+
+//33° Exercício
+// const maiorNumber = [10, 30, 60, 80]
+// const maiorNumberNow = maiorNumber.find(item => item > 50)
+// console.log(maiorNumberNow)
+
+//34° Exercício
+// const maiorNumber = [10, 30, 60, 80]
+// const maiorNumberNow = maiorNumber.find(item => item > 120)
+// console.log(maiorNumberNow)
+// O que apareceu no console, foi undefined, porque não existe um número maior que 120
+
+//35° Exercício
+// Na minha opnião o find e o filter são muito parecidos, o find retorna o primeiro elemento que satisfaz a condição, eo filter retorna um array com todos os elementos que satisfazem a condição.
