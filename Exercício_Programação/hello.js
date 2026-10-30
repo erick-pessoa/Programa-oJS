@@ -240,3 +240,46 @@
 
 //35° Exercício
 // Na minha opnião o find e o filter são muito parecidos, o find retorna o primeiro elemento que satisfaz a condição, eo filter retorna um array com todos os elementos que satisfazem a condição.
+
+//36° Exercício
+// const produtos = [
+//   { id: 1, nome: "Notebook", preco: 4500 },
+//   { id: 2, nome: "Smartphone", preco: 2500 },
+//   { id: 3, nome: "Mouse", preco: 150 },
+//   { id: 4, nome: "Teclado", preco: 300 }
+// ];
+// const BuscaItem = "Teclado";
+// const itemEncontrado = produtos.find(item =>item.nome === BuscaItem)
+// console.log(itemEncontrado)
+
+//37° Exercício
+// const frutas = ["maçã", "", "banana", "", "laranja"];
+// const BuscaStringVazia = frutas.find(item => item === "");
+// console.log(BuscaStringVazia)
+
+//38° Exercício
+// const buscaporID = (array,id) => array.find(item => item.id ===id);
+// const usuarios = [
+//   { id: 1, nome: "Alice" },
+//   { id: 2, nome: "Bob" },
+//   { id: 3, nome: "Carlos" }
+// ];
+// const MostraNaTela = buscaporID(usuarios,2)
+// console.log(MostraNaTela)
+
+//39° Exercício
+// const produtos = [
+//   { id: 1, nome: 'Mouse', preco: 50 },
+//   { id: 2, nome: 'Teclado', preco: 120 },
+//   { id: 3, nome: 'Monitor', preco: 900 }
+// ];
+// const AcharProduto = produtos.find(item=>item.id===2)
+// console.log(AcharProduto)
+// AcharProduto.preco = 150;
+// console.log(AcharProduto)
+
+
+//40° Exercício
+// const numeros = [5, 3, -2, 8, -10];
+// const numeroNegativo = numeros.find(item => item < 0)
+// console.log(numeroNegativo)
