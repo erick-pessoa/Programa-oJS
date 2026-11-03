@@ -283,3 +283,13 @@
 // const numeros = [5, 3, -2, 8, -10];
 // const numeroNegativo = numeros.find(item => item < 0)
 // console.log(numeroNegativo)
+
+//41° Exercício
+// const nome = "Olá123 mundo, te amo mãe11"
+// const resultado = nome.replace(/[0-9]/g,"")
+// console.log(resultado)
+
+//42° Exercício
+// const nome = "Olá123 mundo, te amo mãe11"
+// const resultado = nome.replace(/\s/g,"")
+// console.log(resultado)
