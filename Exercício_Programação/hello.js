@@ -293,3 +293,25 @@
 // const nome = "Olá123 mundo, te amo mãe11"
 // const resultado = nome.replace(/\s/g,"")
 // console.log(resultado)
+
+//43° Exercício
+// const regex = /^\d+$/;
+// console.log(regex.test("123654"))
+// console.log(regex.test("123654a"))
+
+//44° Exercício
+// const  regexEmailHTML5  =  /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?)*$/;
+// console.log(regexEmailHTML5.test("erick.pessoa.20141@hotmail.com"))
+
+//45° Exercício
+// const email = "erick.pessoa.20141@hotmail.com";
+// const troca = email.replace(".",",")
+// console.log(troca)
+
+//46° Exercício
+
+// const texto = "O rato roeu a roupa do rei de Roma.";
+// const semG = texto.replace(/r/i,"xxxx")
+// const comG = texto.replace(/r/ig,"xxxx")
+// console.log(semG)
+// console.log(comG)
