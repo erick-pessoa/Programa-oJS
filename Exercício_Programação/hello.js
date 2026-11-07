@@ -315,3 +315,68 @@
 // const comG = texto.replace(/r/ig,"xxxx")
 // console.log(semG)
 // console.log(comG)
+
+//47° Exercício
+// const item = "m,.o,e.d...@@@a"
+// const result = item.replace(/[^a-z0-9]/gi, "");
+// console.log(result)
+
+//48° Exercício
+// const item = "123456789"
+// const result = item.replace(item.slice(5),"")
+// console.log(result)
+
+//49° Exercício
+// const item = /^[A-Z]/;
+// item.test("Olá mundo"); // true
+// item.test("olá mundo"); // false
+
+// 50° Exercício
+// const textoComEspacos = "Texto   com     muitos   espaços    aqui.";
+// const result = textoComEspacos.replace(/\s+/g," ")
+// console.log(result)
+
+// 51° Exercício
+// const meuSet = new Set();
+// meuSet.add(20)
+// meuSet.add(200)
+// meuSet.add(200000)
+// console.log(meuSet)
+
+// 52° Exercício
+// const meuSet = new Set();
+// meuSet.add(20)
+// meuSet.add(20)
+// console.log(meuSet)
+
+// 53° Exercício
+// const meuSet = new Set();
+// meuSet.add(20)
+// meuSet.add(200)
+// console.log(meuSet.has(20))
+
+// 54° Exercício
+//  const meuSet = new Set();
+// meuSet.add(20)
+// meuSet.add(200)
+// console.log(meuSet.has(20))
+// console.log(meuSet)
+// meuSet.delete(20)
+// console.log(meuSet.has(20))
+// console.log(meuSet)
+
+// 55° Exercício
+// const meuSet = new Set(["banana","couro","lapis"]);
+// console.log(meuSet.size)
+
+// 56° Exercício
+// const array = [2,55,6,9,8,7,80,80,80,80]
+// const meuSet = new Set(array)
+// meuSet.delete(80)
+// console.log(meuSet)
+
+// 57° Exercício
+// const meuSet = new Set([1,2,3,4])
+// console.log(meuSet)
+// const array = [...meuSet]
+// console.log(array)
